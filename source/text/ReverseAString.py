@@ -10,5 +10,3 @@ def reverseString(s):
 	while len(stack)>0:
 		res+=stack.pop()
 	return res
-
-print reverseString("alexis cabana-loriaux")
