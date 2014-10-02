@@ -1,5 +1,5 @@
 #This program checks for the total throughput of each wireless and ethernet network card over the current session and their current bandwidth (up and down) by printing them to the console
-#this program assumes 'netcat' is installed
+#this program assumes 'netcat' is installed and is run under root access
 import subprocess
 import sys
 import time
@@ -29,10 +29,12 @@ def getBandwidthRates(networkCard):
 	upKBPS=uploadedKiloBytes/CONST_TIME_SLEEP
 	return downKBPS,upKBPS
 
-while True:
-	tupbandwlan0 = getBandwidthRates("wlan0")
+networdCard="eth0"
 
-	sys.stdout.write("\r"+"wlan0".ljust(10)+"==>"+"Upload: ".rjust(10)+str(tupband[1]).ljust(5)+" KB/s"+"Download: ".rjust(20)+str(tupband[0]).ljust(5)+" KB/s")
+while True:
+	tupbandwlan0 = getBandwidthRates(networdCard)
+
+	sys.stdout.write("\r"+networdCard.ljust(10)+"==>"+"Upload: ".rjust(10)+str(tupbandwlan0[1]).ljust(5)+" KB/s"+"Download: ".rjust(20)+str(tupbandwlan0[0]).ljust(5)+" KB/s")
 	sys.stdout.flush()
 	
 
